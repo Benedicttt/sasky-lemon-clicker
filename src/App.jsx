@@ -1,11 +1,12 @@
 import './assets/css/App.scss'
-import Menu from './components/Menu.jsx';
-import Clicker from "./pages/Clicker.jsx";
+import AppRouter from './components/AppRouter'
 import { useState } from 'react'
-
+import items from "./config/items.js";
+import useLocalStorage from './utils/useLocalStorage'
 
 function App() {
     const [stats, setStats] = useState({clicks: 0, balance: 0, increase: 1, itemstobuy: 0})
+    const [storeitems,setStoreitems, resetStoreitems] = useLocalStorage('lemon-items',items)
 
     const handleClick = () => {
         // analog
@@ -25,15 +26,13 @@ function App() {
     // }
 
   return (
-          <>
-              <div className="root">
-                  <div className="root_content">
-                      <Clicker stats={stats} handleClick={handleClick} />
-                  </div>
-              </div>
-              <Menu items={stats.itemstobuy} />
-          </>
-      )
+      <AppRouter stats={stats}
+                 storeitems={storeitems}
+                 handleClick={handleClick}
+                 // handlePurchase={handlePurchase}
+                 // handleReset={handleReset}
+      />
+  )
 }
 
 export default App

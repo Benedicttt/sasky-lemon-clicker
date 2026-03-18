@@ -1,6 +1,5 @@
 import { createBrowserRouter } from "react-router"
 import { RouterProvider } from "react-router/dom"
-
 import Root from "../components/Root"
 import ErrorPage from '../pages/ErrorPage'
 import Clicker from '../pages/Clicker'
@@ -12,17 +11,18 @@ function AppRouter(props) {
         {
             path: "/",
             element: <Root items={props.stats.itemstobuy} />,
-            // TODO: dont work ErrorPage if go to wrong url
             errorElement: <ErrorPage />,
             children: [
-                { path: "/", element: <Clicker stats={props.stats} handleClick={props.handleClick} /> },
+                { path: "", element: <Clicker stats={props.stats} handleClick={props.handleClick} /> },
                 { path: "store", element: <Store stats={props.stats} />},
                 { path: "settings", element: <Settings stats={props.stats} />},
             ]
         }
     ])
 
+
     return (
-        <AppRouter stats={stats} handleClick={handleClick} />
+        <RouterProvider router={router} />
     )
 }
+export default AppRouter

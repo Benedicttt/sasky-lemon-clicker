@@ -1,4 +1,4 @@
-// import shortenNumber from '../utils/shortenNumber'
+import shortenNumber from '../utils/shortenNumber'
 import iconLemon from '../assets/img/lemon-svgrepo-com.svg'
 
 function Header(props) {
