@@ -1,6 +1,8 @@
 import './assets/css/App.scss'
 import Lemon from "./components/Lemon.jsx";
 import Balance from './components/Balance'
+import Menu from './components/Menu'
+
 import { useState } from 'react'
 
 
@@ -13,11 +15,19 @@ function App() {
 
   return (
           <>
-            <div>
-              <Balance total={clicks} />
-              <button onClick={handleClick}>napauta</button>
-              <Lemon onClick={handleClick}/>
-            </div>
+          <div className="root">
+              <div className="root_content">
+                  <div className="container clicker">
+                      {/*<Header>lemon clicker</Header>*/}
+                      <header>lemon clicker</header>
+                      <Balance total={clicks} />
+                      <Lemon onClick={handleClick} />
+                      {/*<Booster value="3.2" />*/}
+                      <booster value="3.2" />
+                  </div>
+              </div>
+              <Menu items={2} />
+          </div>
           </>
       )
 }
