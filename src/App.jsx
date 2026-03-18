@@ -1,8 +1,11 @@
 import './assets/css/App.scss'
-import AppRouter from './components/AppRouter'
+
 import { useState } from 'react'
+import round from "./utils/round.jsx"
 import items from "./config/items.js";
+import AppRouter from './components/AppRouter'
 import useLocalStorage from './utils/useLocalStorage'
+import getPurchasableItems from './utils/getPurchasableItems'
 
 function App() {
     const [stats, setStats] = useState({clicks: 0, balance: 0, increase: 100, itemstobuy: 0})
@@ -22,7 +25,9 @@ function App() {
         // _.cloneDeep(stats)
 
         let newstats = {...stats}
-        newstats.balance = newstats.balance + newstats.increase
+        newstats.balance = round(newstats.balance + newstats.increase,1)
+        newstats.itemstobuy = countBuyableItems(storeitems,newstats.balance)
+
         setStats(newstats);
     }
 
@@ -32,11 +37,30 @@ function App() {
             let newstoreitems = [...storeitems]
             let newstats = {...stats}
             newstoreitems[index].qty++
-            newstats.balance = newstats.balance - newstoreitems[index].price
-            // TODO Uusi tuotehinta
+            newstats.balance = round(newstats.balance - newstoreitems[index].price,1)
+            newstoreitems[index].price = Math.floor(newstoreitems[index].baseprice * Math.pow(1.15,newstoreitems[index].qty))
             setStoreItems(newstoreitems)
             setStats(newstats)
+
+            let increase = 1
+            let upgrades = 0
+            for (let i=0; i<newstoreitems.length; i++) {
+                upgrades = upgrades + newstoreitems[i].qty
+                increase = increase + newstoreitems[i].multiplier*newstoreitems[i].qty
+            }
+            newstats.increase = round(increase,1)
+            newstats.upgrades = upgrades
+            newstats.itemstobuy = countBuyableItems(storeitems,newstats.balance)
+
         }
+    }
+
+    const countBuyableItems = (items, balance) => {
+        let total = 0
+        getPurchasableItems(items).forEach(item => {
+            if (item.price <= balance) total++
+        })
+        return total
     }
 
     return (
