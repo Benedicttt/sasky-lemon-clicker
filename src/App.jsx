@@ -1,6 +1,6 @@
 import './assets/css/App.scss'
 import Menu from './components/Menu.jsx';
-import Clickergl from "./pages/Clicker.jsx";
+import Clicker from "./pages/Clicker.jsx";
 import { useState } from 'react'
 
 
