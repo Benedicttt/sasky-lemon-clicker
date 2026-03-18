@@ -5,6 +5,7 @@ import round from "./utils/round.jsx"
 import items from "./config/items.js";
 import AppRouter from './components/AppRouter'
 import useLocalStorage from './utils/useLocalStorage'
+import getPurchasableItems from './utils/getPurchasableItems'
 
 function App() {
     const [stats, setStats] = useState({clicks: 0, balance: 0, increase: 100, itemstobuy: 0})
@@ -25,6 +26,7 @@ function App() {
 
         let newstats = {...stats}
         newstats.balance = round(newstats.balance + newstats.increase,1)
+        newstats.itemstobuy = countBuyableItems(storeitems,newstats.balance)
 
         setStats(newstats);
     }
@@ -48,7 +50,17 @@ function App() {
             }
             newstats.increase = round(increase,1)
             newstats.upgrades = upgrades
+            newstats.itemstobuy = countBuyableItems(storeitems,newstats.balance)
+
         }
+    }
+
+    const countBuyableItems = (items, balance) => {
+        let total = 0
+        getPurchasableItems(items).forEach(item => {
+            if (item.price <= balance) total++
+        })
+        return total
     }
 
     return (
