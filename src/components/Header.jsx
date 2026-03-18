@@ -7,7 +7,7 @@ function Header(props) {
         return (
             <div className="header header_sub">
                 <h1>{props.children}</h1>
-                <div>{props.balance} <img src={iconLemon}/></div>
+                <div>{shortenNumber(props.balance)} <img src={iconLemon}/></div>
             </div>
         )
     } else {
