@@ -1,12 +1,17 @@
 import Header from '../components/Header.jsx'
+import Item from '../components/Item'
+
 
 function Store(props) {
+    const items = props.storeitems.map(item => <Item key={item.id} item={item} />)
+
     return (
         <div className="container">
             <Header balance={props.stats.balance}>store</Header>
             <div className="scrollbox items">
-                TODO items
+                {items}
             </div>
+
         </div>
     )
 }
