@@ -20,19 +20,21 @@ function App() {
         // Tallennetaan päivitetty stats-muuttuja.
         setStats(newstats);
     }
-        // const handleClick = () => {
-        //TODO: tarvitaan kysyä opettajan, miksi tarvitse "setClicks" methodi
-        // return setClicks(clicks + 1)
+    // const handleClick = () => {
+    //TODO: tarvitaan kysyä opettajan, miksi tarvitse "setClicks" methodi
+    // return setClicks(clicks + 1)
     // }
 
-  return (
-      <AppRouter stats={stats}
-                 storeitems={storeitems}
-                 handleClick={handleClick}
-                 // handlePurchase={handlePurchase}
-                 // handleReset={handleReset}
-      />
-  )
+    return (
+        // Router from local must be always first start!!!!!
+        // If dont start firstli NavLink from reactor-router dont work, because router dont work from context componets
+        <AppRouter stats={stats}
+                   storeitems={storeitems}
+                   handleClick={handleClick}
+            // handlePurchase={handlePurchase}
+            // handleReset={handleReset}
+        />
+    )
 }
 
 export default App
