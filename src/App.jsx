@@ -6,7 +6,14 @@ import useLocalStorage from './utils/useLocalStorage'
 
 function App() {
     const [stats, setStats] = useState({clicks: 0, balance: 0, increase: 1, itemstobuy: 0})
-    const [storeitems,setStoreitems, resetStoreitems] = useLocalStorage('lemon-items',items)
+    const [storeitems,setStoreItems, resetStoreItems] = useLocalStorage('lemon-items',items)
+
+
+    // const handleClick = () => {
+    //TODO: tarvitaan kysyä opettajan, miksi tarvitse "setClicks" methodi
+    // return setClicks(clicks + 1)
+    // }
+
 
     const handleClick = () => {
         // analog
@@ -15,17 +22,12 @@ function App() {
         // _.cloneDeep(stats)
 
         let newstats = {...stats}
-        // Kasvatetaan napautusten lukumäärää yhdellä.
-        newstats.clicks = newstats.clicks + 1;
-        // Tallennetaan päivitetty stats-muuttuja.
+        newstats.balance = newstats.balance + newstats.increase
         setStats(newstats);
     }
-    // const handleClick = () => {
-    //TODO: tarvitaan kysyä opettajan, miksi tarvitse "setClicks" methodi
-    // return setClicks(clicks + 1)
-    // }
 
     return (
+        //                                            !!!!!!
         // Router from local must be always first start!!!!!
         // If dont start firstli NavLink from reactor-router dont work, because router dont work from context componets
         <AppRouter stats={stats}

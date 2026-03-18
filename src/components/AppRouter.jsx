@@ -7,6 +7,7 @@ import Store from '../pages/Store'
 import Settings from '../pages/Settings'
 
 function AppRouter(props) {
+    // this routes how render or this fully routers?
     const router = createBrowserRouter([
         {
             path: "/",
