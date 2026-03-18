@@ -11,4 +11,4 @@ function Store(props) {
     )
 }
 
-export default Stores
+export default Store
