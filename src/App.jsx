@@ -30,8 +30,8 @@ function App() {
                   <div className="root_content">
                       <Clicker stats={stats} handleClick={handleClick} />
                   </div>
-                  <Menu items={stats.itemstobuy} />
               </div>
+              <Menu items={stats.itemstobuy} />
           </>
       )
 }
