@@ -8,4 +8,5 @@ Alkaan työ ⤵️
 ### Projekti: [Lemon clicker / Reacti ]
 - projektin luominen
 - git luominen
+- Suoritettu luvut 1–30
 ---
