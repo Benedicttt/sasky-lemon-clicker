@@ -12,6 +12,7 @@ function AppRouter(props) {
         {
             path: "/",
             element: <Root items={props.stats.itemstobuy} />,
+            // TODO: dont work ErrorPage if go to wrong url
             errorElement: <ErrorPage />,
             children: [
                 { path: "/", element: <Clicker stats={props.stats} handleClick={props.handleClick} /> },
