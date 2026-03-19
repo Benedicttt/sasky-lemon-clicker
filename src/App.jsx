@@ -8,10 +8,18 @@ import useLocalStorage from './utils/useLocalStorage'
 import getPurchasableItems from './utils/getPurchasableItems'
 
 function App() {
-    const [stats, setStats] = useState({clicks: 0, balance: 0, increase: 100, itemstobuy: 0})
-    const [storeitems,setStoreItems, resetStoreItems] = useLocalStorage('lemon-items', items)
+    const [storeitems,setStoreitems, resetStoreItems] = useLocalStorage('lemon-items', items)
 
+    const initialstats = {
+        clicks: 0,
+        balance: 0,
+        increase: 1,
+        itemstobuy: 0,
+        upgrades: 0,
+        collected: 0
+    }
 
+    const [stats, setStats] = useState(initialstats)
     // const handleClick = () => {
     //TODO: tarvitaan kysyä opettajan, miksi tarvitse "setClicks" methodi
     // return setClicks(clicks + 1)
@@ -25,6 +33,9 @@ function App() {
         // _.cloneDeep(stats)
 
         let newstats = {...stats}
+
+        newstats.clicks = newstats.clicks + 1;
+        newstats.collected = round(newstats.collected + newstats.increase,1)
         newstats.balance = round(newstats.balance + newstats.increase,1)
         newstats.itemstobuy = countBuyableItems(storeitems,newstats.balance)
 
@@ -39,7 +50,7 @@ function App() {
             newstoreitems[index].qty++
             newstats.balance = round(newstats.balance - newstoreitems[index].price,1)
             newstoreitems[index].price = Math.floor(newstoreitems[index].baseprice * Math.pow(1.15,newstoreitems[index].qty))
-            setStoreItems(newstoreitems)
+            setStoreitems(newstoreitems)
             setStats(newstats)
 
             let increase = 1
