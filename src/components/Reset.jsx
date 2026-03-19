@@ -4,6 +4,13 @@ function Reset(props) {
     const [showForm, setShowForm] = useState(false)
     const [value, setValue] = useState("")
 
+    const handleReset = () => {
+        // Nollataan pelin tiedot ja tyhjennetään tekstikenttä.
+        props.handleReset()
+        setValue("")
+    }
+
+
     if (showForm) {
         return (
 
@@ -14,14 +21,19 @@ function Reset(props) {
                     Jatkamalla tiedot nollautuvat ja peli alkaa
                     alusta.</p>
                 <p>Kirjoita teksti <span>{props.resetvalue}</span> alla olevaan kenttään.</p>
-                <div><input type="text" /></div>
+                <div>
+                    <input type="text"
+                           value={value}
+                           onChange={(e) => {setValue(e.target.value)}} />
+                </div>
                 <button>Poista suoritustiedot</button>
             </div>
         )
     } else {
         return (
             <div className="reset">
-                <button onClick={()=>{setShowForm(true)}}>Poista suoritustiedot</button>
+                {/*change tru to false - false to true*/}
+                <button disabled={props.resetvalue==value?true:false} onClick={handleReset}>Poista suoritustiedot</button>
             </div>
         )
     }

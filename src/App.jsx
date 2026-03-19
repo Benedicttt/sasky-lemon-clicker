@@ -8,7 +8,7 @@ import useLocalStorage from './utils/useLocalStorage'
 import getPurchasableItems from './utils/getPurchasableItems'
 
 function App() {
-    const [storeitems,setStoreitems, resetStoreItems] = useLocalStorage('lemon-items', items)
+    const [storeitems,setStoreitems, resetStoreitems] = useLocalStorage('lemon-items', items)
 
     const initialstats = {
         clicks: 0,
@@ -19,7 +19,9 @@ function App() {
         collected: 0
     }
 
-    const [stats, setStats] = useState(initialstats)
+    const [stats, setStats, resetStats] = useLocalStorage('lemon-stats',initialstats)
+
+    // const [stats, setStats] = useState(initialstats)
     // const handleClick = () => {
     //TODO: tarvitaan kysyä opettajan, miksi tarvitse "setClicks" methodi
     // return setClicks(clicks + 1)
@@ -45,7 +47,8 @@ function App() {
     const handlePurchase = (id) => {
         const index = storeitems.findIndex(storeitem => storeitem.id == id)
         if (stats.balance >= storeitems[index].price) {
-            let newstoreitems = [...storeitems]
+            let newstoreitems = JSON.parse(JSON.stringify(storeitems))
+
             let newstats = {...stats}
             newstoreitems[index].qty++
             newstats.balance = round(newstats.balance - newstoreitems[index].price,1)
@@ -74,6 +77,12 @@ function App() {
         return total
     }
 
+    const handleReset = () => {
+        // Palautetaan taltiot alkuarvoihin.
+        resetStats()
+        resetStoreitems()
+    }
+
     return (
         //                                            !!!!!!
         // Router from local must be always first start!!!!!
@@ -83,7 +92,7 @@ function App() {
                    storeitems={storeitems}
                    handleClick={handleClick}
                    handlePurchase={handlePurchase}
-            // handleReset={handleReset}
+                   handleReset={handleReset}
         />
     )
 }
