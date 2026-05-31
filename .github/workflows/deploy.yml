@@ -32,6 +32,6 @@ jobs:
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v3
         with:
-          app-name: lemon-clicker-demo
+          app-name: lemon-clicker-demo-p71678ß
           publish-profile: ${{ secrets.AZURE_WEB_PUBLISHED_LEMON_CLICKER }}
           package: ./dist
