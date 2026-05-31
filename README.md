@@ -1,14 +1,13 @@
-Serhii Kyivskyi
+####_Serhii Kyivskyi_
+####_p71678@edu.sasky.fi_
 
 
-Viikkopäiväkirja
+### Alkaa api
+$ npm install
 
-Alkaan työ ⤵️
+$ ntl
 
-## Viikko 12/2026 (16.03.-22.03.2026)
+valitse $ "dev"
 
-### Projekti: [Lemon clicker / Reacti ]
-- projektin luominen
-- git luominen
-- Suoritettu luvut 1–30
----
+avaa selaimessa
+__http://localhost:5173/__
