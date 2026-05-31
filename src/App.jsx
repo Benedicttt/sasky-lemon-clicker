@@ -1,6 +1,5 @@
 import './assets/css/App.scss'
 
-import { useState } from 'react'
 import round from "./utils/round.jsx"
 import items from "./config/items.js";
 import AppRouter from './components/AppRouter'
@@ -23,7 +22,7 @@ function App() {
 
     // const [stats, setStats] = useState(initialstats)
     // const handleClick = () => {
-    //TODO: tarvitaan kysyä opettajan, miksi tarvitse "setClicks" methodi
+    // TODO: tarvitaan kysyä opettajan, miksi tarvitse "setClicks" methodi
     // return setClicks(clicks + 1)
     // }
 

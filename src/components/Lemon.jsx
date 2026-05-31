@@ -2,7 +2,7 @@ import lemon from '../assets/img/lemon-svgrepo-com.svg'
 
 function Lemon(props) {
     return (
-        <div className="lemon">
+        <div className="lemon" id='lemon'>
             <img src={lemon} alt="lemon" onClick={props.onClick} />
         </div>
     )
