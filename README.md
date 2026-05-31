@@ -1,14 +1,15 @@
-####_Serhii Kyivskyi_
+_Serhii Kyivskyi_
 
-####_p71678@edu.sasky.fi_
+_p71678@edu.sasky.fi_
+
 
 
 ### Alkaa api
-$ npm install
+###$ npm install
 
-$ ntl
+###$ ntl
 
-valitse $ "dev"
+###valitse $ "dev"
 
-avaa selaimessa
-__http://localhost:5173/__
+###avaa selaimessa
+###__http://localhost:5173/__
