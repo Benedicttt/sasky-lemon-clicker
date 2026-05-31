@@ -22,14 +22,15 @@
 }
 
 body {
+  font-family: 'Dancing Script Variable', cursive; /* sovelluksen fontti */
   background-color: var(--neutral);             /* sovelluksen taustaväri */
   color: var(--neutral-darker);                   /* sovelluksen tekstiväri */
-  font-family: 'Roboto Condensed', sans-serif;  /* sovelluksen fontti */
+    /* sovelluksen fontti */
   font-size: 1.25em;                            /* sovelluksen tekstin koko */
 }
 
 h1 {
-  font-family: 'Boogaloo', cursive;             /* otsikon fontti */
+  font-family: 'Monaco', cursive;             /* otsikon fontti */
   font-weight: normal;                          /* otsikon paksuus */
 }
 

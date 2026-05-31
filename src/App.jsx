@@ -1,4 +1,7 @@
 import './assets/css/App.scss'
+import '@fontsource/boogaloo'
+import '@fontsource-variable/roboto-condensed/wght.css'
+import '@fontsource-variable/dancing-script/wght.css';
 
 import round from "./utils/round.jsx"
 import items from "./config/items.js";
