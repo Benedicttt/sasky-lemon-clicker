@@ -13,3 +13,7 @@ _p71678@edu.sasky.fi_
 
 ### avaa selaimessa
 ### __http://localhost:5173/__
+
+
+
+["polandcentral","francecentral","germanywestcentral","norwayeast","uksouth"]
